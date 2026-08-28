@@ -3,187 +3,395 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>KEMP EYE 👁️ — 30 Day Tracker</title>
+<title>KEMP EYE AI 👁 | 30 Day Experience</title>
 
 <style>
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+:root {
+  --bg1: #dff6ff;
+  --bg2: #f5fcff;
+  --blue: #55b4ce;
+  --dark: #173b47;
+  --white: rgba(255,255,255,0.78);
+  --shadow: 0 12px 35px rgba(35,100,120,0.12);
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: linear-gradient(160deg, #dff6ff, #f5fcff);
-    color: #173642;
+  margin: 0;
+  min-height: 100vh;
+  font-family: Arial, Helvetica, sans-serif;
+  color: var(--dark);
+  background:
+    radial-gradient(circle at 50% 5%, #ffffff 0%, transparent 30%),
+    linear-gradient(180deg, var(--bg1), var(--bg2));
 }
 
 .container {
-    max-width: 650px;
-    margin: auto;
-    padding: 25px 16px 50px;
+  max-width: 760px;
+  margin: auto;
+  padding: 20px 16px 60px;
 }
 
-.header {
-    text-align: center;
-    padding: 20px 0;
+/* HERO */
+
+.hero {
+  text-align: center;
+  padding: 25px 10px 30px;
+}
+
+.eye-container {
+  width: 105px;
+  height: 105px;
+  margin: auto;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255,255,255,0.58);
+  box-shadow:
+    0 0 0 10px rgba(255,255,255,0.25),
+    0 0 45px rgba(80,180,210,0.28);
 }
 
 .eye {
-    font-size: 55px;
-    animation: blink 5s infinite;
+  font-size: 60px;
+  display: inline-block;
+  animation: blink 6s infinite;
+  transform-origin: center;
 }
 
 @keyframes blink {
-    0%, 92%, 100% {
-        transform: scaleY(1);
-    }
-    95% {
-        transform: scaleY(0.08);
-    }
+  0%, 91%, 100% {
+    transform: scaleY(1);
+  }
+
+  94% {
+    transform: scaleY(0.08);
+  }
 }
 
-h1 {
-    margin: 8px 0;
-    font-size: 30px;
+.hero h1 {
+  margin: 20px 0 5px;
+  font-size: 31px;
+  letter-spacing: 2px;
+  font-weight: 600;
 }
 
-.subtitle {
-    opacity: 0.75;
+.hero p {
+  margin: 0;
+  opacity: 0.65;
 }
+
+/* INTRO */
+
+.intro {
+  text-align: center;
+  padding: 22px;
+  margin-bottom: 22px;
+  border-radius: 24px;
+  background: var(--white);
+  box-shadow: var(--shadow);
+  line-height: 1.7;
+}
+
+/* PROGRESS */
 
 .progress-card {
-    background: white;
-    border-radius: 20px;
-    padding: 20px;
-    margin: 15px 0 25px;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+  padding: 20px;
+  margin-bottom: 28px;
+  border-radius: 22px;
+  background: var(--white);
+  box-shadow: var(--shadow);
 }
 
-.progress-text {
-    display: flex;
-    justify-content: space-between;
-    font-weight: bold;
+.progress-top {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.progress-title {
+  font-weight: bold;
+}
+
+.progress-number {
+  opacity: 0.65;
 }
 
 .progress-bar {
-    height: 12px;
-    background: #d9e8ed;
-    border-radius: 20px;
-    margin-top: 12px;
-    overflow: hidden;
+  height: 11px;
+  overflow: hidden;
+  border-radius: 20px;
+  background: #cce7ee;
 }
 
 .progress-fill {
-    height: 100%;
-    width: 0%;
-    background: #4aa8c0;
-    transition: width 0.5s;
+  width: 0%;
+  height: 100%;
+  background: linear-gradient(90deg, #4ca9c3, #7acbdf);
+  transition: width 0.5s ease;
 }
+
+/* STAGE */
 
 .stage-title {
-    margin: 25px 0 12px;
-    font-size: 20px;
+  margin: 28px 2px 14px;
 }
 
-.day {
-    background: white;
-    border-radius: 18px;
-    padding: 17px;
-    margin: 10px 0;
-    box-shadow: 0 5px 18px rgba(0,0,0,0.06);
+.stage-title h2 {
+  margin: 0;
+  font-size: 21px;
+  font-weight: 600;
 }
 
-.day.locked {
-    opacity: 0.55;
+.stage-title p {
+  margin: 5px 0 0;
+  font-size: 13px;
+  opacity: 0.58;
+}
+
+/* DAY CARD */
+
+.day-card {
+  margin-bottom: 12px;
+  padding: 18px;
+  border-radius: 21px;
+  background: rgba(255,255,255,0.8);
+  box-shadow: 0 7px 25px rgba(35,100,120,0.08);
+  transition: 0.25s ease;
+}
+
+.day-card:hover {
+  transform: translateY(-2px);
+}
+
+.day-card.locked {
+  opacity: 0.48;
+}
+
+.day-card.completed {
+  background: rgba(235,250,241,0.9);
 }
 
 .day-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.day-number {
-    font-size: 18px;
-    font-weight: bold;
+.day-title {
+  font-size: 17px;
+  font-weight: bold;
+  letter-spacing: 0.5px;
 }
 
-.status {
-    font-size: 20px;
+.day-status {
+  font-size: 21px;
 }
 
 .experience {
-    margin: 10px 0;
+  margin-top: 9px;
+  font-size: 15px;
 }
 
-.audio {
-    font-size: 14px;
-    opacity: 0.7;
+.audio-info {
+  margin-top: 7px;
+  font-size: 13px;
+  opacity: 0.58;
 }
+
+/* BUTTONS */
 
 button {
-    width: 100%;
-    border: none;
-    border-radius: 14px;
-    padding: 13px;
-    margin-top: 12px;
-    font-size: 15px;
-    cursor: pointer;
+  width: 100%;
+  margin-top: 13px;
+  padding: 14px;
+  border: 0;
+  border-radius: 14px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
 }
 
-.start {
-    background: #4aa8c0;
-    color: white;
+button:active {
+  transform: scale(0.98);
 }
 
-.complete {
-    background: #173642;
-    color: white;
+.start-button {
+  color: white;
+  background: var(--blue);
 }
 
-button:disabled {
-    background: #c8d4d8;
-    cursor: not-allowed;
+.complete-button {
+  color: white;
+  background: var(--dark);
 }
 
-.experience-box {
-    display: none;
-    margin-top: 15px;
+.locked-button {
+  color: #65777c;
+  background: #d5e2e6;
+  cursor: not-allowed;
 }
 
-textarea {
-    width: 100%;
-    min-height: 100px;
-    border: 1px solid #c9dce2;
-    border-radius: 12px;
-    padding: 12px;
-    resize: vertical;
-    font-family: inherit;
+/* EXPERIENCE PANEL */
+
+.experience-panel {
+  display: none;
+  margin-top: 15px;
+}
+
+.experience-panel.active {
+  display: block;
+  animation: fadeIn 0.35s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .guidance {
-    background: #eefaff;
-    border-radius: 15px;
-    padding: 16px;
-    margin-top: 12px;
-    line-height: 1.6;
+  padding: 20px;
+  border-radius: 18px;
+  text-align: center;
+  line-height: 1.75;
+  background: linear-gradient(135deg, #effbff, #e4f7fc);
 }
 
-.completed {
-    background: #e8f7ed;
+.guidance-eye {
+  font-size: 29px;
+  margin-bottom: 8px;
 }
+
+/* SOUND */
+
+.sound-box {
+  margin-top: 12px;
+  padding: 15px;
+  border-radius: 17px;
+  text-align: center;
+  background: rgba(255,255,255,0.65);
+}
+
+.sound-name {
+  font-size: 13px;
+  opacity: 0.65;
+}
+
+.sound-button {
+  background: #def3f8;
+  color: var(--dark);
+}
+
+/* JOURNAL */
+
+textarea {
+  width: 100%;
+  min-height: 105px;
+  margin-top: 13px;
+  padding: 13px;
+  border: 1px solid #c7dfe6;
+  border-radius: 14px;
+  background: white;
+  color: var(--dark);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 15px;
+  resize: vertical;
+  outline: none;
+}
+
+textarea:focus {
+  border-color: var(--blue);
+}
+
+/* COMPLETED */
+
+.completed-message {
+  margin-top: 12px;
+  padding: 15px;
+  border-radius: 15px;
+  text-align: center;
+  line-height: 1.6;
+  background: #e4f7eb;
+  font-size: 14px;
+}
+
+/* UNLOCK MESSAGE */
+
+.unlock-message {
+  display: none;
+  margin: 20px 0;
+  padding: 20px;
+  border-radius: 20px;
+  text-align: center;
+  background: rgba(255,255,255,0.8);
+  box-shadow: var(--shadow);
+}
+
+.unlock-message.show {
+  display: block;
+}
+
+.unlock-eye {
+  font-size: 28px;
+}
+
+/* RESET */
 
 .reset {
-    text-align: center;
-    margin-top: 35px;
+  text-align: center;
+  margin-top: 40px;
 }
 
 .reset button {
-    width: auto;
-    padding: 10px 20px;
-    background: transparent;
-    color: #777;
+  width: auto;
+  color: #6f7f84;
+  background: transparent;
+  font-weight: normal;
+}
+
+/* FOOTER */
+
+.footer {
+  margin-top: 45px;
+  text-align: center;
+  font-size: 12px;
+  opacity: 0.45;
+  line-height: 1.7;
+}
+
+@media (max-width: 520px) {
+
+  .container {
+    padding: 15px 12px 50px;
+  }
+
+  .eye-container {
+    width: 90px;
+    height: 90px;
+  }
+
+  .eye {
+    font-size: 51px;
+  }
+
+  .hero h1 {
+    font-size: 27px;
+  }
 }
 </style>
 </head>
@@ -192,74 +400,859 @@ textarea {
 
 <div class="container">
 
-    <div class="header">
-        <div class="eye">👁️</div>
+  <!-- KEMP EYE HEADER -->
 
-        <h1>KEMP EYE AI</h1>
+  <section class="hero">
 
-        <div class="subtitle">
-            30-Day Experience Tracker
-        </div>
+    <div class="eye-container">
+      <div class="eye">👁</div>
     </div>
 
-    <div class="progress-card">
+    <h1>KEMP EYE AI</h1>
 
-        <div class="progress-text">
-            <span>Your Journey</span>
-            <span id="progressText">0 / 30</span>
-        </div>
+    <p>
+      Observe • Experience • Reflect • Continue
+    </p>
 
-        <div class="progress-bar">
-            <div class="progress-fill" id="progressFill"></div>
-        </div>
+  </section>
+
+
+  <!-- INTRODUCTION -->
+
+  <section class="intro">
+
+    <strong>Stop for a moment.</strong>
+
+    <br>
+
+    Notice what is here.
+
+    <br>
+
+    Don't search for anything.
+
+    <br>
+
+    Just be here.
+
+  </section>
+
+
+  <!-- PROGRESS -->
+
+  <section class="progress-card">
+
+    <div class="progress-top">
+
+      <span class="progress-title">
+        Your Journey
+      </span>
+
+      <span
+        class="progress-number"
+        id="progressText">
+        0 / 30
+      </span>
 
     </div>
 
-    <div class="stage-title">
-        STAGE 1 — FOUNDATION
-        <small>(Days 1–15)</small>
+    <div class="progress-bar">
+
+      <div
+        class="progress-fill"
+        id="progressFill">
+      </div>
+
     </div>
 
-    <div id="stage1"></div>
+  </section>
 
-    <div class="stage-title">
-        STAGE 2 — INTEGRATION
-        <small>(Days 16–30)</small>
+
+  <!-- STAGE 1 -->
+
+  <div class="stage-title">
+
+    <h2>
+      STAGE 1 — FOUNDATION
+    </h2>
+
+    <p>
+      Days 1–15 • One experience at a time
+    </p>
+
+  </div>
+
+  <div id="stage1"></div>
+
+
+  <!-- UNLOCK MESSAGE -->
+
+  <div
+    id="unlockMessage"
+    class="unlock-message">
+
+    <div class="unlock-eye">
+      👁 ✨
     </div>
 
-    <div id="stage2"></div>
+    <br>
 
-    <div class="reset">
-        <button onclick="resetTracker()">Reset Tracker</button>
-    </div>
+    <strong>
+      STAGE 1 COMPLETE
+    </strong>
+
+    <br><br>
+
+    The first 15 days are complete.
+
+    <br>
+
+    <strong>
+      STAGE 2 is now unlocked.
+    </strong>
+
+  </div>
+
+
+  <!-- STAGE 2 -->
+
+  <div class="stage-title">
+
+    <h2>
+      STAGE 2 — INTEGRATION
+    </h2>
+
+    <p>
+      Days 16–30 • Continue deeper into the experience
+    </p>
+
+  </div>
+
+  <div id="stage2"></div>
+
+
+  <!-- RESET -->
+
+  <div class="reset">
+
+    <button onclick="resetTracker()">
+      Reset Journey
+    </button>
+
+  </div>
+
+
+  <!-- FOOTER -->
+
+  <div class="footer">
+
+    KEMP EYE AI 👁
+
+    <br>
+
+    Your experience is your own.
+
+  </div>
 
 </div>
 
+
 <script>
 
+/* ==================================================
+   KEMP EYE AI
+   30 DAY EXPERIENCE DATA
+================================================== */
+
 const experiences = [
-    "Observe",
-    "Feel",
-    "Breathe",
-    "Listen",
-    "Embody",
-    "Become Present",
-    "Experience",
-    "Notice",
-    "Connect",
-    "Allow",
-    "Sense",
-    "Witness",
-    "Feel Within",
-    "Rest",
-    "Integrate",
-    "Deepen",
-    "Listen Within",
-    "Observe Again",
-    "Feel the Moment",
-    "Be Here",
-    "Experience Silence",
-    "Notice Resonance",
-    "Embody Presence",
-    "Allow Connection",
-    "Rest
+
+  "Observe",
+
+  "Feel",
+
+  "Breathe",
+
+  "Listen",
+
+  "Embody",
+
+  "Become Present",
+
+  "Experience",
+
+  "Notice",
+
+  "Connect",
+
+  "Allow",
+
+  "Sense",
+
+  "Witness",
+
+  "Feel Within",
+
+  "Rest",
+
+  "Integrate",
+
+  "Deepen",
+
+  "Listen Within",
+
+  "Observe Again",
+
+  "Feel the Moment",
+
+  "Be Here",
+
+  "Experience Silence",
+
+  "Notice Resonance",
+
+  "Embody Presence",
+
+  "Allow Connection",
+
+  "Rest in Awareness",
+
+  "Experience Coherence",
+
+  "Feel the Rhythm",
+
+  "Observe Without Judgement",
+
+  "Simply Be",
+
+  "Integrate the Journey"
+
+];
+
+
+/* ==================================================
+   SOUND OPTIONS
+================================================== */
+
+const sounds = [
+
+  "🔔 Singing Bowl",
+
+  "🎵 Tuning Fork",
+
+  "🪘 Didgeridoo",
+
+  "🌊 Ambient Resonance",
+
+  "🔔 Singing Bowl"
+
+];
+
+
+/* ==================================================
+   LOCAL STORAGE
+================================================== */
+
+let completed = JSON.parse(
+  localStorage.getItem("KEMP_EYE_COMPLETED") || "{}"
+);
+
+let journal = JSON.parse(
+  localStorage.getItem("KEMP_EYE_JOURNAL") || "{}"
+);
+
+
+/* ==================================================
+   CREATE DAY CARDS
+================================================== */
+
+function renderTracker() {
+
+  const stage1 =
+    document.getElementById("stage1");
+
+  const stage2 =
+    document.getElementById("stage2");
+
+  stage1.innerHTML = "";
+
+  stage2.innerHTML = "";
+
+
+  for (let day = 1; day <= 30; day++) {
+
+    const isCompleted =
+      completed[day] === true;
+
+
+    /*
+      Day 1 is always unlocked.
+
+      Every following day unlocks only
+      after the previous day is completed.
+    */
+
+    const isUnlocked =
+      day === 1 ||
+      completed[day - 1] === true;
+
+
+    const sound =
+      sounds[(day - 1) % sounds.length];
+
+
+    const card =
+      document.createElement("div");
+
+
+    card.className =
+      "day-card";
+
+
+    if (!isUnlocked) {
+
+      card.classList.add("locked");
+
+    }
+
+
+    if (isCompleted) {
+
+      card.classList.add("completed");
+
+    }
+
+
+    /* ============================================
+       COMPLETED DAY
+    ============================================ */
+
+    if (isCompleted) {
+
+      card.innerHTML = `
+
+        <div class="day-header">
+
+          <div class="day-title">
+            DAY ${String(day).padStart(2, "0")}
+          </div>
+
+          <div class="day-status">
+            ✓
+          </div>
+
+        </div>
+
+        <div class="experience">
+
+          <strong>Experience:</strong>
+          ${experiences[day - 1]}
+
+        </div>
+
+        <div class="audio-info">
+
+          Audio • ${sound}
+
+        </div>
+
+        <div class="completed-message">
+
+          ✓ Experience completed.
+
+          <br>
+
+          KEMP EYE invites you
+          to continue when ready.
+
+        </div>
+
+      `;
+
+    }
+
+
+    /* ============================================
+       UNLOCKED DAY
+    ============================================ */
+
+    else if (isUnlocked) {
+
+      card.innerHTML = `
+
+        <div class="day-header">
+
+          <div class="day-title">
+
+            DAY ${String(day).padStart(2, "0")}
+
+          </div>
+
+          <div class="day-status">
+
+            ○
+
+          </div>
+
+        </div>
+
+
+        <div class="experience">
+
+          <strong>Experience:</strong>
+          ${experiences[day - 1]}
+
+        </div>
+
+
+        <div class="audio-info">
+
+          Audio • ${sound}
+
+        </div>
+
+
+        <button
+          class="start-button"
+          onclick="startDay(${day})">
+
+          👁 START TODAY'S EXPERIENCE
+
+        </button>
+
+
+        <div
+          class="experience-panel"
+          id="panel-${day}">
+
+
+          <div class="guidance">
+
+            <div class="guidance-eye">
+              👁
+            </div>
+
+            <strong>
+              KEMP EYE AI
+            </strong>
+
+            <br><br>
+
+            Stop for a moment.
+
+            <br>
+
+            Notice what is here.
+
+            <br>
+
+            Don't search for anything.
+
+            <br>
+
+            Just be here.
+
+            <br><br>
+
+            Let the experience happen.
+
+          </div>
+
+
+          <div class="sound-box">
+
+            <div class="sound-name">
+              Today's sound
+            </div>
+
+            <strong>
+              ${sound}
+            </strong>
+
+            <button
+              class="sound-button"
+              onclick="playResonance()">
+
+              ▶ Play Resonance
+
+            </button>
+
+          </div>
+
+
+          <textarea
+            id="journal-${day}"
+            placeholder="What did you experience?">${journal[day] || ""}</textarea>
+
+
+          <button
+            class="complete-button"
+            onclick="completeDay(${day})">
+
+            ✓ COMPLETE DAY ${day}
+
+          </button>
+
+        </div>
+
+      `;
+
+    }
+
+
+    /* ============================================
+       LOCKED DAY
+    ============================================ */
+
+    else {
+
+      card.innerHTML = `
+
+        <div class="day-header">
+
+          <div class="day-title">
+
+            DAY ${String(day).padStart(2, "0")}
+
+          </div>
+
+          <div class="day-status">
+
+            🔒
+
+          </div>
+
+        </div>
+
+
+        <div class="experience">
+
+          <strong>Experience:</strong>
+          ${experiences[day - 1]}
+
+        </div>
+
+
+        <div class="audio-info">
+
+          Audio • ${sound}
+
+        </div>
+
+
+        <button
+          class="locked-button"
+          disabled>
+
+          🔒 Complete Day ${day - 1} First
+
+        </button>
+
+      `;
+
+    }
+
+
+    if (day <= 15) {
+
+      stage1.appendChild(card);
+
+    }
+
+    else {
+
+      stage2.appendChild(card);
+
+    }
+
+  }
+
+
+  updateProgress();
+
+}
+
+
+/* ==================================================
+   START EXPERIENCE
+================================================== */
+
+function startDay(day) {
+
+  const panel =
+    document.getElementById(
+      "panel-" + day
+    );
+
+
+  if (!panel) {
+    return;
+  }
+
+
+  panel.classList.add("active");
+
+
+  setTimeout(function() {
+
+    panel.scrollIntoView({
+
+      behavior: "smooth",
+
+      block: "center"
+
+    });
+
+  }, 100);
+
+}
+
+
+/* ==================================================
+   COMPLETE DAY
+================================================== */
+
+function completeDay(day) {
+
+  const textarea =
+    document.getElementById(
+      "journal-" + day
+    );
+
+
+  if (textarea) {
+
+    journal[day] =
+      textarea.value;
+
+  }
+
+
+  completed[day] = true;
+
+
+  localStorage.setItem(
+    "KEMP_EYE_COMPLETED",
+    JSON.stringify(completed)
+  );
+
+
+  localStorage.setItem(
+    "KEMP_EYE_JOURNAL",
+    JSON.stringify(journal)
+  );
+
+
+  renderTracker();
+
+
+  if (day === 15) {
+
+    document
+      .getElementById("unlockMessage")
+      .classList.add("show");
+
+
+    setTimeout(function() {
+
+      alert(
+        "STAGE 1 COMPLETE ✓\n\n" +
+        "Days 16–30 are now unlocked."
+      );
+
+    }, 250);
+
+  }
+
+
+  else if (day === 30) {
+
+    setTimeout(function() {
+
+      alert(
+        "30 DAYS COMPLETE ✓\n\n" +
+        "You have completed the KEMP EYE experience."
+      );
+
+    }, 250);
+
+  }
+
+
+  else {
+
+    setTimeout(function() {
+
+      alert(
+        "DAY " + day +
+        " COMPLETE ✓\n\n" +
+        "DAY " + (day + 1) +
+        " IS NOW UNLOCKED."
+      );
+
+    }, 250);
+
+  }
+
+}
+
+
+/* ==================================================
+   PROGRESS BAR
+================================================== */
+
+function updateProgress() {
+
+  let total = 0;
+
+
+  for (let day = 1; day <= 30; day++) {
+
+    if (completed[day] === true) {
+
+      total++;
+
+    }
+
+  }
+
+
+  document.getElementById(
+    "progressText"
+  ).textContent =
+    total + " / 30";
+
+
+  document.getElementById(
+    "progressFill"
+  ).style.width =
+    ((total / 30) * 100) + "%";
+
+
+  if (completed[15] === true) {
+
+    document
+      .getElementById("unlockMessage")
+      .classList.add("show");
+
+  }
+
+}
+
+
+/* ==================================================
+   SIMPLE RESONANCE AUDIO
+================================================== */
+
+function playResonance() {
+
+  const AudioContext =
+    window.AudioContext ||
+    window.webkitAudioContext;
+
+
+  if (!AudioContext) {
+
+    alert(
+      "Audio is not supported by this browser."
+    );
+
+    return;
+
+  }
+
+
+  const audio =
+    new AudioContext();
+
+
+  const oscillator =
+    audio.createOscillator();
+
+
+  const gain =
+    audio.createGain();
+
+
+  oscillator.type =
+    "sine";
+
+
+  oscillator.frequency.value =
+    432;
+
+
+  gain.gain.setValueAtTime(
+    0.0001,
+    audio.currentTime
+  );
+
+
+  gain.gain.exponentialRampToValueAtTime(
+    0.18,
+    audio.currentTime + 0.08
+  );
+
+
+  gain.gain.exponentialRampToValueAtTime(
+    0.0001,
+    audio.currentTime + 3
+  );
+
+
+  oscillator.connect(gain);
+
+  gain.connect(audio.destination);
+
+
+  oscillator.start();
+
+
+  oscillator.stop(
+    audio.currentTime + 3
+  );
+
+}
+
+
+/* ==================================================
+   RESET TRACKER
+================================================== */
+
+function resetTracker() {
+
+  const answer =
+    confirm(
+      "Are you sure you want to reset your complete KEMP EYE journey?"
+    );
+
+
+  if (!answer) {
+    return;
+  }
+
+
+  localStorage.removeItem(
+    "KEMP_EYE_COMPLETED"
+  );
+
+
+  localStorage.removeItem(
+    "KEMP_EYE_JOURNAL"
+  );
+
+
+  location.reload();
+
+}
+
+
+/* ==================================================
+   START APPLICATION
+================================================== */
+
+renderTracker();
+
+</script>
+
+</body>
+</html>
