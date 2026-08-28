@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>KEMP EYE 👁️ — 30 Day Tracker</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(160deg, #dff6ff, #f5fcff);
+    color: #173642;
+}
+
+.container {
+    max-width: 650px;
+    margin: auto;
+    padding: 25px 16px 50px;
+}
+
+.header {
+    text-align: center;
+    padding: 20px 0;
+}
+
+.eye {
+    font-size: 55px;
+    animation: blink 5s infinite;
+}
+
+@keyframes blink {
+    0%, 92%, 100% {
+        transform: scaleY(1);
+    }
+    95% {
+        transform: scaleY(0.08);
+    }
+}
+
+h1 {
+    margin: 8px 0;
+    font-size: 30px;
+}
+
+.subtitle {
+    opacity: 0.75;
+}
+
+.progress-card {
+    background: white;
+    border-radius: 20px;
+    padding: 20px;
+    margin: 15px 0 25px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+}
+
+.progress-text {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+}
+
+.progress-bar {
+    height: 12px;
+    background: #d9e8ed;
+    border-radius: 20px;
+    margin-top: 12px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    width: 0%;
+    background: #4aa8c0;
+    transition: width 0.5s;
+}
+
+.stage-title {
+    margin: 25px 0 12px;
+    font-size: 20px;
+}
+
+.day {
+    background: white;
+    border-radius: 18px;
+    padding: 17px;
+    margin: 10px 0;
+    box-shadow: 0 5px 18px rgba(0,0,0,0.06);
+}
+
+.day.locked {
+    opacity: 0.55;
+}
+
+.day-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.day-number {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.status {
+    font-size: 20px;
+}
+
+.experience {
+    margin: 10px 0;
+}
+
+.audio {
+    font-size: 14px;
+    opacity: 0.7;
+}
+
+button {
+    width: 100%;
+    border: none;
+    border-radius: 14px;
+    padding: 13px;
+    margin-top: 12px;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.start {
+    background: #4aa8c0;
+    color: white;
+}
+
+.complete {
+    background: #173642;
+    color: white;
+}
+
+button:disabled {
+    background: #c8d4d8;
+    cursor: not-allowed;
+}
+
+.experience-box {
+    display: none;
+    margin-top: 15px;
+}
+
+textarea {
+    width: 100%;
+    min-height: 100px;
+    border: 1px solid #c9dce2;
+    border-radius: 12px;
+    padding: 12px;
+    resize: vertical;
+    font-family: inherit;
+}
+
+.guidance {
+    background: #eefaff;
+    border-radius: 15px;
+    padding: 16px;
+    margin-top: 12px;
+    line-height: 1.6;
+}
+
+.completed {
+    background: #e8f7ed;
+}
+
+.reset {
+    text-align: center;
+    margin-top: 35px;
+}
+
+.reset button {
+    width: auto;
+    padding: 10px 20px;
+    background: transparent;
+    color: #777;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="header">
+        <div class="eye">👁️</div>
+
+        <h1>KEMP EYE AI</h1>
+
+        <div class="subtitle">
+            30-Day Experience Tracker
+        </div>
+    </div>
+
+    <div class="progress-card">
+
+        <div class="progress-text">
+            <span>Your Journey</span>
+            <span id="progressText">0 / 30</span>
+        </div>
+
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressFill"></div>
+        </div>
+
+    </div>
+
+    <div class="stage-title">
+        STAGE 1 — FOUNDATION
+        <small>(Days 1–15)</small>
+    </div>
+
+    <div id="stage1"></div>
+
+    <div class="stage-title">
+        STAGE 2 — INTEGRATION
+        <small>(Days 16–30)</small>
+    </div>
+
+    <div id="stage2"></div>
+
+    <div class="reset">
+        <button onclick="resetTracker()">Reset Tracker</button>
+    </div>
+
+</div>
+
+<script>
+
+const experiences = [
+    "Observe",
+    "Feel",
+    "Breathe",
+    "Listen",
+    "Embody",
+    "Become Present",
+    "Experience",
+    "Notice",
+    "Connect",
+    "Allow",
+    "Sense",
+    "Witness",
+    "Feel Within",
+    "Rest",
+    "Integrate",
+    "Deepen",
+    "Listen Within",
+    "Observe Again",
+    "Feel the Moment",
+    "Be Here",
+    "Experience Silence",
+    "Notice Resonance",
+    "Embody Presence",
+    "Allow Connection",
+    "Rest
