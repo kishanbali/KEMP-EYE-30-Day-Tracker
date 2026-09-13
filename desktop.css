@@ -1,0 +1,9 @@
+/* KEMP EYE AI — desktop presentation matched to the cleaner mobile experience */
+@media (min-width: 621px){
+  .app{max-width:520px;padding:22px 15px 38px}
+  .hero{padding:12px 0 20px}
+  .days{grid-template-columns:1fr!important}
+  .controls,.tabs{display:flex!important;flex-direction:column!important;gap:10px}
+  .card{border-radius:22px}
+  .orb{width:130px;height:130px}
+}
